@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Meetings | LDR Agrofarms</title>
+
+  <link
+    rel="stylesheet"
+    href="fa-dashboard.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="meetings.css"
+  >
+</head>
+
+<body>
+
+  <!-- ================= SIDEBAR ================= -->
+
+  <aside class="sidebar">
+
+    <div class="brand">
+
+      <div class="brand-logo">
+        🌾
+      </div>
+
+      <div>
+        <h2>LDR Agrofarms</h2>
+        <span>Management System</span>
+      </div>
+
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+      <p class="nav-title">MAIN</p>
+
+      <a
+        href="fa-dashboard.html"
+        class="nav-item"
+      >
+        <span>📊</span>
+        <span>Dashboard</span>
+      </a>
+
+      <a
+        href="my-farmers.html"
+        class="nav-item"
+      >
+        <span>🌾</span>
+        <span>My Farmers</span>
+      </a>
+
+      <a
+        href="field-visits.html"
+        class="nav-item"
+      >
+        <span>📍</span>
+        <span>Field Visits</span>
+      </a>
+
+      <a
+        href="meetings.html"
+        class="nav-item active"
+      >
+        <span>🤝</span>
+        <span>Meetings</span>
+      </a>
+
+
+      <p class="nav-title">WORK</p>
+
+      <a
+        href="attendance.html"
+        class="nav-item"
+      >
+        <span>🕘</span>
+        <span>Attendance</span>
+      </a>
+
+      <a
+        href="tasks.html"
+        class="nav-item"
+      >
+        <span>📋</span>
+        <span>Tasks</span>
+      </a>
+
+      <a
+        href="leave.html"
+        class="nav-item"
+      >
+        <span>📝</span>
+        <span>Leave</span>
+      </a>
+
+
+      <p class="nav-title">ACCOUNT</p>
+
+      <a
+        href="notifications.html"
+        class="nav-item"
+      >
+        <span>🔔</span>
+        <span>Notifications</span>
+      </a>
+
+      <a
+        href="profile.html"
+        class="nav-item"
+      >
+        <span>👤</span>
+        <span>Profile</span>
+      </a>
+
+    </nav>
+
+
+    <button
+      class="logout-btn"
+      id="logoutBtn"
+    >
+      <span>🚪</span>
+      Logout
+    </button>
+
+  </aside>
+
+
+  <!-- ================= MAIN ================= -->
+
+  <main class="main-content">
+
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+      <button
+        class="menu-btn"
+        id="menuBtn"
+      >
+        ☰
+      </button>
+
+
+      <div class="page-heading">
+
+        <h1>Meetings</h1>
+
+        <p>
+          Manage farmer meetings and schedules
+        </p>
+
+      </div>
+
+
+      <div class="topbar-actions">
+
+        <button class="icon-btn">
+          🔔
+        </button>
+
+
+        <div class="user-profile">
+
+          <div class="avatar">
+            FA
+          </div>
+
+          <div class="user-info">
+
+            <strong>
+              Field Assistant
+            </strong>
+
+            <span>
+              FA
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <!-- ================= MEETINGS PAGE ================= -->
+
+    <section class="meetings-page">
+
+
+      <!-- HEADER -->
+
+      <div class="meetings-header">
+
+        <div>
+
+          <span class="card-label">
+            MEETING MANAGEMENT
+          </span>
+
+          <h2>
+            Farmer Meetings
+          </h2>
+
+          <p>
+            Schedule and manage your farmer meetings.
+          </p>
+
+        </div>
+
+
+        <button
+          class="schedule-meeting-btn"
+          id="scheduleMeetingBtn"
+        >
+          <span>＋</span>
+          Schedule Meeting
+        </button>
+
+      </div>
+
+
+      <!-- ================= STATS ================= -->
+
+      <div class="meeting-stats">
+
+
+        <div class="meeting-stat-card">
+
+          <div class="meeting-stat-icon">
+            🤝
+          </div>
+
+          <div>
+
+            <span>Total Meetings</span>
+
+            <h3 id="totalMeetings">
+              0
+            </h3>
+
+          </div>
+
+        </div>
+
+
+        <div class="meeting-stat-card">
+
+          <div class="meeting-stat-icon today">
+            📅
+          </div>
+
+          <div>
+
+            <span>Today's Meetings</span>
+
+            <h3 id="todayMeetings">
+              0
+            </h3>
+
+          </div>
+
+        </div>
+
+
+        <div class="meeting-stat-card">
+
+          <div class="meeting-stat-icon completed">
+            ✓
+          </div>
+
+          <div>
+
+            <span>Completed</span>
+
+            <h3 id="completedMeetings">
+              0
+            </h3>
+
+          </div>
+
+        </div>
+
+
+        <div class="meeting-stat-card">
+
+          <div class="meeting-stat-icon upcoming">
+            ⏰
+          </div>
+
+          <div>
+
+            <span>Upcoming</span>
+
+            <h3 id="upcomingMeetings">
+              0
+            </h3>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- ================= TOOLBAR ================= -->
+
+      <div class="meeting-toolbar">
+
+
+        <div class="search-box">
+
+          <span>🔍</span>
+
+          <input
+            type="text"
+            id="meetingSearch"
+            placeholder="Search farmer or meeting..."
+          >
+
+        </div>
+
+
+        <select id="meetingStatusFilter">
+
+          <option value="ALL">
+            All Meetings
+          </option>
+
+          <option value="SCHEDULED">
+            Scheduled
+          </option>
+
+          <option value="COMPLETED">
+            Completed
+          </option>
+
+          <option value="CANCELLED">
+            Cancelled
+          </option>
+
+        </select>
+
+
+        <select id="meetingDateFilter">
+
+          <option value="ALL">
+            All Dates
+          </option>
+
+          <option value="TODAY">
+            Today
+          </option>
+
+          <option value="UPCOMING">
+            Upcoming
+          </option>
+
+          <option value="PAST">
+            Past
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <!-- ================= MEETINGS TABLE ================= -->
+
+      <div class="meetings-table-card">
+
+
+        <div class="table-header">
+
+          <div>
+
+            <span class="card-label">
+              MEETING HISTORY
+            </span>
+
+            <h3>
+              Scheduled Meetings
+            </h3>
+
+          </div>
+
+
+          <span
+            class="meeting-count"
+            id="meetingCount"
+          >
+            0 Meetings
+          </span>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+          <table>
+
+            <thead>
+
+              <tr>
+
+                <th>Farmer</th>
+
+                <th>Date</th>
+
+                <th>Time</th>
+
+                <th>Purpose</th>
+
+                <th>Location</th>
+
+                <th>Status</th>
+
+                <th>Action</th>
+
+              </tr>
+
+            </thead>
+
+
+            <tbody id="meetingsTableBody">
+
+              <tr>
+
+                <td
+                  colspan="7"
+                  class="empty-meetings"
+                >
+
+                  <div class="empty-icon">
+                    🤝
+                  </div>
+
+                  <strong>
+                    No meetings scheduled
+                  </strong>
+
+                  <p>
+                    Your farmer meetings will appear here.
+                  </p>
+
+                </td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+
+    </section>
+
+  </main>
+
+
+  <!-- ================= SCHEDULE MEETING MODAL ================= -->
+
+  <div
+    class="modal-overlay"
+    id="meetingModal"
+  >
+
+    <div class="meeting-modal">
+
+
+      <div class="modal-header">
+
+        <div>
+
+          <span class="card-label">
+            MEETING SCHEDULE
+          </span>
+
+          <h2>
+            Schedule Meeting
+          </h2>
+
+        </div>
+
+
+        <button
+          class="close-modal"
+          id="closeMeetingModal"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <form id="meetingForm">
+
+
+        <div class="form-group">
+
+          <label>
+            Farmer *
+          </label>
+
+          <select
+            id="meetingFarmer"
+            required
+          >
+
+            <option value="">
+              Select Farmer
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="form-row">
+
+
+          <div class="form-group">
+
+            <label>
+              Meeting Date *
+            </label>
+
+            <input
+              type="date"
+              id="meetingDate"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Meeting Time *
+            </label>
+
+            <input
+              type="time"
+              id="meetingTime"
+              required
+            >
+
+          </div>
+
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            Meeting Purpose *
+          </label>
+
+          <input
+            type="text"
+            id="meetingPurpose"
+            placeholder="e.g. Crop discussion"
+            required
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            Location
+          </label>
+
+          <input
+            type="text"
+            id="meetingLocation"
+            placeholder="Enter meeting location"
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            Remarks
+          </label>
+
+          <textarea
+            id="meetingRemarks"
+            rows="4"
+            placeholder="Enter additional details..."
+          ></textarea>
+
+        </div>
+
+
+        <div class="meeting-info-box">
+
+          <span>📅</span>
+
+          <div>
+
+            <strong>
+              Meeting Reminder
+            </strong>
+
+            <p>
+              Keep the farmer informed about the scheduled meeting.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+          <button
+            type="button"
+            class="cancel-btn"
+            id="cancelMeetingBtn"
+          >
+            Cancel
+          </button>
+
+
+          <button
+            type="submit"
+            class="save-meeting-btn"
+          >
+            Schedule Meeting
+          </button>
+
+        </div>
+
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <script src="fa-dashboard.js"></script>
+
+  <script src="meetings.js"></script>
+
+</body>
+
+</html>

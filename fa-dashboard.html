@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>FA Dashboard | LDR Agrofarms</title>
+
+  <link
+    rel="stylesheet"
+    href="fa-dashboard.css"
+  />
+</head>
+
+<body>
+
+  <!-- ================= SIDEBAR ================= -->
+  <aside class="sidebar" id="sidebar">
+
+    <div class="brand">
+      <div class="brand-logo">
+        <img src="images/ldrlogo.jpeg" alt="LDR Agrofarms Logo" />
+      </div>
+
+      <div>
+        <h2>LDR Agrofarms</h2>
+        <span>Management System</span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+
+      <p class="nav-title">MAIN</p>
+
+      <a href="dashboard.html" class="nav-item active">
+        <span>📊</span>
+        <span>Dashboard</span>
+      </a>
+
+      <a href="my-farmers.html" class="nav-item">
+        <span>🌾</span>
+        <span>My Farmers</span>
+      </a>
+
+      <a href="field-visits.html" class="nav-item">
+        <span>📍</span>
+        <span>Field Visits</span>
+      </a>
+
+      <a href="meetings.html" class="nav-item">
+        <span>🤝</span>
+        <span>Meetings</span>
+      </a>
+
+      <p class="nav-title">WORK</p>
+
+      <a href="attendance.html" class="nav-item">
+        <span>🕘</span>
+        <span>Attendance</span>
+      </a>
+
+      <a href="tasks.html" class="nav-item">
+        <span>📋</span>
+        <span>Tasks</span>
+      </a>
+
+      <a href="leave.html" class="nav-item">
+        <span>📝</span>
+        <span>Leave</span>
+      </a>
+
+      <p class="nav-title">ACCOUNT</p>
+
+      <a href="notifications.html" class="nav-item">
+        <span>🔔</span>
+        <span>Notifications</span>
+        <span class="notification-count">3</span>
+      </a>
+
+      <a href="profile.html" class="nav-item">
+        <span>👤</span>
+        <span>Profile</span>
+      </a>
+
+    </nav>
+
+    <button class="logout-btn" id="logoutBtn">
+      <span>🚪</span>
+      Logout
+    </button>
+
+  </aside>
+
+
+  <!-- ================= MAIN ================= -->
+
+  <main class="main-content">
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+      <button
+        class="menu-btn"
+        id="menuBtn"
+        aria-label="Open menu"
+      >
+        ☰
+      </button>
+
+      <div class="page-heading">
+        <h1>FA Dashboard</h1>
+        <p>Welcome back, Field Assistant 👋</p>
+      </div>
+
+      <div class="topbar-actions">
+
+        <button class="icon-btn" title="Notifications">
+          🔔
+          <span class="notification-dot"></span>
+        </button>
+
+        <div class="user-profile">
+
+          <div class="avatar">
+            FA
+          </div>
+
+          <div class="user-info">
+            <strong>Field Assistant</strong>
+            <span>FA</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <!-- ================= DASHBOARD ================= -->
+
+    <section class="dashboard-page" id="dashboard">
+
+      <!-- Welcome Banner -->
+
+      <div class="welcome-card">
+
+        <div>
+          <span class="welcome-label">
+            TODAY'S OVERVIEW
+          </span>
+
+          <h2>Good morning, Field Assistant!</h2>
+
+          <p>
+            Manage your farmers, field visits, attendance
+            and daily tasks from one place.
+          </p>
+        </div>
+
+        <div class="welcome-icon">
+          🌱
+        </div>
+
+      </div>
+
+
+      <!-- ================= STAT CARDS ================= -->
+
+      <div class="stats-grid">
+
+        <div class="stat-card">
+
+          <div class="stat-icon farmers-icon">
+            🌾
+          </div>
+
+          <div class="stat-content">
+            <span>Total Farmers</span>
+            <h3 id="totalFarmers">--</h3>
+            <small>Assigned to you</small>
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-icon visits-icon">
+            📍
+          </div>
+
+          <div class="stat-content">
+            <span>Field Visits</span>
+            <h3 id="totalVisits">--</h3>
+            <small>Today's visits</small>
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-icon meetings-icon">
+            🤝
+          </div>
+
+          <div class="stat-content">
+            <span>Meetings</span>
+            <h3 id="totalMeetings">--</h3>
+            <small>Today's meetings</small>
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-icon tasks-icon">
+            📋
+          </div>
+
+          <div class="stat-content">
+            <span>Pending Tasks</span>
+            <h3 id="pendingTasks">--</h3>
+            <small>Need attention</small>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- ================= MAIN GRID ================= -->
+
+      <div class="dashboard-grid">
+
+
+        <!-- ATTENDANCE -->
+
+        <div class="dashboard-card attendance-card">
+
+          <div class="card-header">
+
+            <div>
+              <span class="card-label">
+                ATTENDANCE
+              </span>
+
+              <h3>Today's Attendance</h3>
+            </div>
+
+            <span class="status-badge" id="attendanceStatus">
+              Not Checked In
+            </span>
+
+          </div>
+
+
+          <div class="attendance-body">
+
+            <div class="attendance-time">
+
+              <span>Current Status</span>
+
+              <strong id="attendanceTime">
+                --:--
+              </strong>
+
+              <small id="attendanceMessage">
+                Please check in to start your day.
+              </small>
+
+            </div>
+
+
+            <button
+              class="primary-btn"
+              id="attendanceBtn"
+            >
+              📍 Check In
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- QUICK ACTIONS -->
+
+        <div class="dashboard-card">
+
+          <div class="card-header">
+
+            <div>
+              <span class="card-label">
+                QUICK ACTIONS
+              </span>
+
+              <h3>What do you want to do?</h3>
+            </div>
+
+          </div>
+
+
+          <div class="quick-actions">
+
+            <button class="quick-action">
+              <span>➕</span>
+              <strong>Add Farmer</strong>
+              <small>Register a new farmer</small>
+            </button>
+
+            <button class="quick-action">
+              <span>📍</span>
+              <strong>Field Visit</strong>
+              <small>Record a field visit</small>
+            </button>
+
+            <button class="quick-action">
+              <span>🤝</span>
+              <strong>Meeting</strong>
+              <small>Create a meeting</small>
+            </button>
+
+            <button class="quick-action">
+              <span>📋</span>
+              <strong>View Tasks</strong>
+              <small>Check assigned tasks</small>
+            </button>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+      <!-- ================= RECENT FARMERS ================= -->
+
+      <div class="dashboard-card farmers-table-card">
+
+        <div class="card-header">
+
+          <div>
+            <span class="card-label">
+              FARMERS
+            </span>
+
+            <h3>Recent Farmers</h3>
+          </div>
+
+          <button class="view-all-btn">
+            View All →
+          </button>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+          <table>
+
+            <thead>
+              <tr>
+                <th>Farmer ID</th>
+                <th>Name</th>
+                <th>Village</th>
+                <th>Phone</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+
+            <tbody id="farmersTableBody">
+
+              <tr>
+                <td colspan="5" class="empty-state">
+                  No farmer data available
+                </td>
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+
+      <!-- ================= BOTTOM GRID ================= -->
+
+      <div class="bottom-grid">
+
+
+        <!-- TASKS -->
+
+        <div class="dashboard-card">
+
+          <div class="card-header">
+
+            <div>
+              <span class="card-label">
+                TASKS
+              </span>
+
+              <h3>My Tasks</h3>
+            </div>
+
+            <button class="view-all-btn">
+              View All →
+            </button>
+
+          </div>
+
+
+          <div class="task-list" id="taskList">
+
+            <div class="empty-state">
+              No tasks available
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- NOTIFICATIONS -->
+
+        <div class="dashboard-card">
+
+          <div class="card-header">
+
+            <div>
+              <span class="card-label">
+                UPDATES
+              </span>
+
+              <h3>Recent Notifications</h3>
+            </div>
+
+            <button class="view-all-btn">
+              View All →
+            </button>
+
+          </div>
+
+
+          <div
+            class="notification-list"
+            id="notificationList"
+          >
+
+            <div class="notification-item">
+
+              <div class="notification-icon">
+                🔔
+              </div>
+
+              <div>
+                <strong>Welcome to LDR Agrofarms</strong>
+                <p>
+                  Your FA dashboard is ready.
+                </p>
+                <small>Just now</small>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= OTHER SECTIONS ================= -->
+
+    <section
+      class="content-section"
+      id="farmers"
+    >
+      <h2>My Farmers</h2>
+      <p>Farmer management will appear here.</p>
+    </section>
+
+
+    <section
+      class="content-section"
+      id="visits"
+    >
+      <h2>Field Visits</h2>
+      <p>Field visit management will appear here.</p>
+    </section>
+
+
+    <section
+      class="content-section"
+      id="meetings"
+    >
+      <h2>Meetings</h2>
+      <p>Meeting management will appear here.</p>
+    </section>
+
+
+    <section
+      class="content-section"
+      id="attendance"
+    >
+      <h2>Attendance</h2>
+      <p>Attendance management will appear here.</p>
+    </section>
+
+
+    <section
+      class="content-section"
+      id="tasks"
+    >
+      <h2>Tasks</h2>
+      <p>Task management will appear here.</p>
+    </section>
+
+
+    <section
+      class="content-section"
+      id="leave"
+    >
+      <h2>Leave</h2>
+      <p>Leave management will appear here.</p>
+    </section>
+
+
+    <section
+      class="content-section"
+      id="notifications"
+    >
+      <h2>Notifications</h2>
+      <p>Your notifications will appear here.</p>
+    </section>
+
+
+    <section
+      class="content-section"
+      id="profile"
+    >
+      <h2>Profile</h2>
+      <p>Your profile information will appear here.</p>
+    </section>
+
+  </main>
+
+
+  <script src="fa-dashboard.js"></script>
+
+</body>
+</html>

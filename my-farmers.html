@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>My Farmers | LDR Agrofarms</title>
+
+  <link rel="stylesheet" href="fa-dashboard.css">
+  <link rel="stylesheet" href="my-farmers.css">
+</head>
+
+<body>
+
+  <!-- ================= SIDEBAR ================= -->
+
+  <aside class="sidebar">
+
+    <div class="brand">
+      <div class="brand-logo">
+        🌾
+      </div>
+
+      <div>
+        <h2>LDR Agrofarms</h2>
+        <span>Management System</span>
+      </div>
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+      <p class="nav-title">MAIN</p>
+
+      <a href="fa-dashboard.html" class="nav-item">
+        <span>📊</span>
+        <span>Dashboard</span>
+      </a>
+
+      <a href="my-farmers.html" class="nav-item active">
+        <span>🌾</span>
+        <span>My Farmers</span>
+      </a>
+
+      <a href="field-visits.html" class="nav-item">
+        <span>📍</span>
+        <span>Field Visits</span>
+      </a>
+
+      <a href="meetings.html" class="nav-item">
+        <span>🤝</span>
+        <span>Meetings</span>
+      </a>
+
+
+      <p class="nav-title">WORK</p>
+
+      <a href="attendance.html" class="nav-item">
+        <span>🕘</span>
+        <span>Attendance</span>
+      </a>
+
+      <a href="tasks.html" class="nav-item">
+        <span>📋</span>
+        <span>Tasks</span>
+      </a>
+
+      <a href="leave.html" class="nav-item">
+        <span>📝</span>
+        <span>Leave</span>
+      </a>
+
+
+      <p class="nav-title">ACCOUNT</p>
+
+      <a href="notifications.html" class="nav-item">
+        <span>🔔</span>
+        <span>Notifications</span>
+      </a>
+
+      <a href="profile.html" class="nav-item">
+        <span>👤</span>
+        <span>Profile</span>
+      </a>
+
+    </nav>
+
+
+    <button class="logout-btn" id="logoutBtn">
+      <span>🚪</span>
+      Logout
+    </button>
+
+  </aside>
+
+
+  <!-- ================= MAIN ================= -->
+
+  <main class="main-content">
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+      <button class="menu-btn" id="menuBtn">
+        ☰
+      </button>
+
+      <div class="page-heading">
+
+        <h1>My Farmers</h1>
+
+        <p>
+          Manage farmers assigned to you
+        </p>
+
+      </div>
+
+
+      <div class="topbar-actions">
+
+        <button class="icon-btn">
+          🔔
+        </button>
+
+
+        <div class="user-profile">
+
+          <div class="avatar">
+            FA
+          </div>
+
+          <div class="user-info">
+
+            <strong>Field Assistant</strong>
+
+            <span>FA</span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <!-- ================= FARMERS PAGE ================= -->
+
+    <section class="farmers-page">
+
+
+      <!-- PAGE HEADER -->
+
+      <div class="farmers-header">
+
+        <div>
+
+          <span class="card-label">
+            FARMER MANAGEMENT
+          </span>
+
+          <h2>
+            My Farmers
+          </h2>
+
+          <p>
+            View and manage all farmers assigned to you.
+          </p>
+
+        </div>
+
+
+        <button
+          class="add-farmer-btn"
+          id="addFarmerBtn"
+        >
+          <span>＋</span>
+          Add Farmer
+        </button>
+
+      </div>
+
+
+      <!-- ================= FARMER STATS ================= -->
+
+      <div class="farmer-stats">
+
+
+        <div class="farmer-stat-card">
+
+          <div class="farmer-stat-icon">
+            🌾
+          </div>
+
+          <div>
+
+            <span>Total Farmers</span>
+
+            <h3 id="totalFarmers">
+              0
+            </h3>
+
+          </div>
+
+        </div>
+
+
+        <div class="farmer-stat-card">
+
+          <div class="farmer-stat-icon active">
+            ✓
+          </div>
+
+          <div>
+
+            <span>Active Farmers</span>
+
+            <h3 id="activeFarmers">
+              0
+            </h3>
+
+          </div>
+
+        </div>
+
+
+        <div class="farmer-stat-card">
+
+          <div class="farmer-stat-icon meeting">
+            🤝
+          </div>
+
+          <div>
+
+            <span>Meetings</span>
+
+            <h3 id="meetingCount">
+              0
+            </h3>
+
+          </div>
+
+        </div>
+
+
+        <div class="farmer-stat-card">
+
+          <div class="farmer-stat-icon visit">
+            📍
+          </div>
+
+          <div>
+
+            <span>Field Visits</span>
+
+            <h3 id="visitCount">
+              0
+            </h3>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- ================= SEARCH BAR ================= -->
+
+      <div class="farmer-toolbar">
+
+        <div class="search-box">
+
+          <span>🔍</span>
+
+          <input
+            type="text"
+            id="farmerSearch"
+            placeholder="Search farmer by name, ID or village..."
+          >
+
+        </div>
+
+
+        <select id="statusFilter">
+
+          <option value="ALL">
+            All Farmers
+          </option>
+
+          <option value="ACTIVE">
+            Active
+          </option>
+
+          <option value="INACTIVE">
+            Inactive
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <!-- ================= FARMERS TABLE ================= -->
+
+      <div class="farmers-table-card">
+
+        <div class="table-header">
+
+          <div>
+
+            <span class="card-label">
+              FARMERS LIST
+            </span>
+
+            <h3>
+              Assigned Farmers
+            </h3>
+
+          </div>
+
+
+          <span
+            class="farmer-count"
+            id="farmerCount"
+          >
+            0 Farmers
+          </span>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+          <table>
+
+            <thead>
+
+              <tr>
+
+                <th>Farmer</th>
+
+                <th>Farmer ID</th>
+
+                <th>Village</th>
+
+                <th>District</th>
+
+                <th>Phone</th>
+
+                <th>Status</th>
+
+                <th>Action</th>
+
+              </tr>
+
+            </thead>
+
+
+            <tbody id="farmersTableBody">
+
+              <tr>
+
+                <td
+                  colspan="7"
+                  class="empty-farmers"
+                >
+
+                  <div class="empty-icon">
+                    🌾
+                  </div>
+
+                  <strong>
+                    No farmers available
+                  </strong>
+
+                  <p>
+                    Farmers assigned to you will appear here.
+                  </p>
+
+                </td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+
+    </section>
+
+  </main>
+
+
+  <!-- ================= ADD FARMER MODAL ================= -->
+
+  <div
+    class="modal-overlay"
+    id="farmerModal"
+  >
+
+    <div class="farmer-modal">
+
+      <div class="modal-header">
+
+        <div>
+
+          <span class="card-label">
+            FARMER REGISTRATION
+          </span>
+
+          <h2>
+            Add New Farmer
+          </h2>
+
+        </div>
+
+
+        <button
+          class="close-modal"
+          id="closeFarmerModal"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <form id="farmerForm">
+
+        <div class="form-grid">
+
+
+          <div class="form-group">
+
+            <label>
+              Farmer ID *
+            </label>
+
+            <input
+              type="text"
+              id="farmerId"
+              placeholder="e.g. FRM001"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Farmer Name *
+            </label>
+
+            <input
+              type="text"
+              id="farmerName"
+              placeholder="Enter farmer name"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Phone *
+            </label>
+
+            <input
+              type="tel"
+              id="farmerPhone"
+              placeholder="Enter phone number"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Email
+            </label>
+
+            <input
+              type="email"
+              id="farmerEmail"
+              placeholder="Enter email"
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Village
+            </label>
+
+            <input
+              type="text"
+              id="farmerVillage"
+              placeholder="Enter village"
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              District
+            </label>
+
+            <input
+              type="text"
+              id="farmerDistrict"
+              placeholder="Enter district"
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              State
+            </label>
+
+            <input
+              type="text"
+              id="farmerState"
+              placeholder="Enter state"
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Land Area
+            </label>
+
+            <input
+              type="number"
+              id="landArea"
+              placeholder="Area in acres"
+              min="0"
+            >
+
+          </div>
+
+
+        </div>
+
+
+        <div class="form-group full-width">
+
+          <label>
+            Address
+          </label>
+
+          <textarea
+            id="farmerAddress"
+            rows="3"
+            placeholder="Enter complete address"
+          ></textarea>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+          <button
+            type="button"
+            class="cancel-btn"
+            id="cancelFarmerBtn"
+          >
+            Cancel
+          </button>
+
+
+          <button
+            type="submit"
+            class="save-farmer-btn"
+          >
+            Save Farmer
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <script src="fa-dashboard.js"></script>
+  <script src="my-farmers.js"></script>
+
+</body>
+</html>

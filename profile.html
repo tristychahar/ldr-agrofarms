@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Profile | LDR Agrofarms</title>
+
+  <link
+    rel="stylesheet"
+    href="fa-dashboard.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="profile.css"
+  >
+</head>
+
+<body>
+
+  <!-- ================= SIDEBAR ================= -->
+
+  <aside class="sidebar">
+
+    <div class="brand">
+
+      <div class="brand-logo">
+        🌾
+      </div>
+
+      <div>
+        <h2>LDR Agrofarms</h2>
+        <span>Management System</span>
+      </div>
+
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+      <p class="nav-title">MAIN</p>
+
+      <a href="fa-dashboard.html" class="nav-item">
+        <span>📊</span>
+        <span>Dashboard</span>
+      </a>
+
+      <a href="my-farmers.html" class="nav-item">
+        <span>🌾</span>
+        <span>My Farmers</span>
+      </a>
+
+      <a href="field-visits.html" class="nav-item">
+        <span>📍</span>
+        <span>Field Visits</span>
+      </a>
+
+      <a href="meetings.html" class="nav-item">
+        <span>🤝</span>
+        <span>Meetings</span>
+      </a>
+
+
+      <p class="nav-title">WORK</p>
+
+      <a href="attendance.html" class="nav-item">
+        <span>🕘</span>
+        <span>Attendance</span>
+      </a>
+
+      <a href="tasks.html" class="nav-item">
+        <span>📋</span>
+        <span>Tasks</span>
+      </a>
+
+      <a href="leave.html" class="nav-item">
+        <span>📝</span>
+        <span>Leave</span>
+      </a>
+
+
+      <p class="nav-title">ACCOUNT</p>
+
+      <a href="notifications.html" class="nav-item">
+        <span>🔔</span>
+        <span>Notifications</span>
+      </a>
+
+      <a
+        href="profile.html"
+        class="nav-item active"
+      >
+        <span>👤</span>
+        <span>Profile</span>
+      </a>
+
+    </nav>
+
+
+    <button
+      class="logout-btn"
+      id="logoutBtn"
+    >
+      <span>🚪</span>
+      Logout
+    </button>
+
+  </aside>
+
+
+  <!-- ================= MAIN ================= -->
+
+  <main class="main-content">
+
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+      <button
+        class="menu-btn"
+        id="menuBtn"
+      >
+        ☰
+      </button>
+
+
+      <div class="page-heading">
+
+        <h1>My Profile</h1>
+
+        <p>
+          View and manage your employee profile
+        </p>
+
+      </div>
+
+
+      <div class="topbar-actions">
+
+        <button
+          class="icon-btn"
+          id="notificationBtn"
+        >
+          🔔
+        </button>
+
+
+        <div class="user-profile">
+
+          <div
+            class="avatar"
+            id="topbarAvatar"
+          >
+            FA
+          </div>
+
+          <div class="user-info">
+
+            <strong id="topbarName">
+              Field Assistant
+            </strong>
+
+            <span id="topbarRole">
+              FA
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <!-- ================= PROFILE PAGE ================= -->
+
+    <section class="profile-page">
+
+
+      <!-- ================= PROFILE HERO ================= -->
+
+      <div class="profile-hero">
+
+        <div class="profile-avatar-wrapper">
+
+          <div
+            class="profile-avatar"
+            id="profileAvatar"
+          >
+            FA
+          </div>
+
+          <button
+            type="button"
+            class="avatar-edit-btn"
+            id="avatarEditBtn"
+            title="Change photo"
+          >
+            📷
+          </button>
+
+          <input
+            type="file"
+            id="profilePhotoInput"
+            accept="image/*"
+            hidden
+          >
+
+        </div>
+
+
+        <div class="profile-hero-info">
+
+          <span class="card-label">
+            EMPLOYEE PROFILE
+          </span>
+
+          <h2 id="profileName">
+            Field Assistant
+          </h2>
+
+          <p id="profileRole">
+            Field Assistant
+          </p>
+
+          <span
+            class="profile-status active"
+            id="profileStatus"
+          >
+            ● Active
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- ================= PROFILE CONTENT ================= -->
+
+      <div class="profile-grid">
+
+
+        <!-- ================= PERSONAL INFO ================= -->
+
+        <div class="profile-card">
+
+          <div class="profile-card-header">
+
+            <div>
+
+              <span class="card-label">
+                PERSONAL INFORMATION
+              </span>
+
+              <h3>
+                Basic Details
+              </h3>
+
+            </div>
+
+          </div>
+
+
+          <div class="profile-details">
+
+
+            <div class="profile-detail">
+
+              <span>
+                Full Name
+              </span>
+
+              <strong id="fullName">
+                -
+              </strong>
+
+            </div>
+
+
+            <div class="profile-detail">
+
+              <span>
+                Employee ID
+              </span>
+
+              <strong id="employeeId">
+                -
+              </strong>
+
+            </div>
+
+
+            <div class="profile-detail">
+
+              <span>
+                Phone Number
+              </span>
+
+              <strong id="phone">
+                -
+              </strong>
+
+            </div>
+
+
+            <div class="profile-detail">
+
+              <span>
+                Email
+              </span>
+
+              <strong id="email">
+                -
+              </strong>
+
+            </div>
+
+
+            <div class="profile-detail">
+
+              <span>
+                Role
+              </span>
+
+              <strong id="role">
+                -
+              </strong>
+
+            </div>
+
+
+            <div class="profile-detail">
+
+              <span>
+                Joining Date
+              </span>
+
+              <strong id="joiningDate">
+                -
+              </strong>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+
+        <!-- ================= WORK INFO ================= -->
+
+        <div class="profile-card">
+
+          <div class="profile-card-header">
+
+            <div>
+
+              <span class="card-label">
+                WORK INFORMATION
+              </span>
+
+              <h3>
+                Employment Details
+              </h3>
+
+            </div>
+
+          </div>
+
+
+          <div class="profile-details">
+
+
+            <div class="profile-detail">
+
+              <span>
+                Designation
+              </span>
+
+              <strong id="designation">
+                Field Assistant
+              </strong>
+
+            </div>
+
+
+            <div class="profile-detail">
+
+              <span>
+                Level
+              </span>
+
+              <strong id="employeeLevel">
+                FA
+              </strong>
+
+            </div>
+
+
+            <div class="profile-detail">
+
+              <span>
+                Region / Area
+              </span>
+
+              <strong id="assignedArea">
+                -
+              </strong>
+
+            </div>
+
+
+            <div class="profile-detail">
+
+              <span>
+                Supervisor
+              </span>
+
+              <strong id="supervisor">
+                -
+              </strong>
+
+            </div>
+
+
+            <div class="profile-detail">
+
+              <span>
+                Status
+              </span>
+
+              <strong id="employmentStatus">
+                Active
+              </strong>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+
+        <!-- ================= CONTACT ================= -->
+
+        <div class="profile-card full-width">
+
+          <div class="profile-card-header">
+
+            <div>
+
+              <span class="card-label">
+                CONTACT INFORMATION
+              </span>
+
+              <h3>
+                Communication Details
+              </h3>
+
+            </div>
+
+          </div>
+
+
+          <div class="profile-details contact-grid">
+
+
+            <div class="profile-detail">
+
+              <span>
+                Phone
+              </span>
+
+              <strong id="contactPhone">
+                -
+              </strong>
+
+            </div>
+
+
+            <div class="profile-detail">
+
+              <span>
+                Email
+              </span>
+
+              <strong id="contactEmail">
+                -
+              </strong>
+
+            </div>
+
+
+            <div class="profile-detail">
+
+              <span>
+                Address
+              </span>
+
+              <strong id="address">
+                -
+              </strong>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+
+        <!-- ================= SECURITY ================= -->
+
+        <div class="profile-card full-width">
+
+          <div class="profile-card-header">
+
+            <div>
+
+              <span class="card-label">
+                ACCOUNT SECURITY
+              </span>
+
+              <h3>
+                Security
+              </h3>
+
+            </div>
+
+          </div>
+
+
+          <div class="security-row">
+
+
+            <div>
+
+              <strong>
+                Password
+              </strong>
+
+              <p>
+                Keep your account password secure.
+              </p>
+
+            </div>
+
+
+            <button
+              type="button"
+              class="change-password-btn"
+              id="changePasswordBtn"
+            >
+              Change Password
+            </button>
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ================= CHANGE PASSWORD MODAL ================= -->
+
+  <div
+    class="modal-overlay"
+    id="passwordModal"
+  >
+
+    <div class="password-modal">
+
+
+      <div class="modal-header">
+
+        <div>
+
+          <span class="card-label">
+            ACCOUNT SECURITY
+          </span>
+
+          <h2>
+            Change Password
+          </h2>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="close-modal"
+          id="closePasswordModal"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <form id="passwordForm">
+
+
+        <div class="form-group">
+
+          <label>
+            Current Password *
+          </label>
+
+          <input
+            type="password"
+            id="currentPassword"
+            required
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            New Password *
+          </label>
+
+          <input
+            type="password"
+            id="newPassword"
+            minlength="6"
+            required
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            Confirm New Password *
+          </label>
+
+          <input
+            type="password"
+            id="confirmPassword"
+            minlength="6"
+            required
+          >
+
+        </div>
+
+
+        <div class="modal-actions">
+
+          <button
+            type="button"
+            class="cancel-btn"
+            id="cancelPasswordBtn"
+          >
+            Cancel
+          </button>
+
+          <button
+            type="submit"
+            class="save-password-btn"
+          >
+            Update Password
+          </button>
+
+        </div>
+
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <script src="fa-dashboard.js"></script>
+
+  <script src="profile.js"></script>
+
+</body>
+
+</html>

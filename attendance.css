@@ -1,0 +1,844 @@
+/* =========================================================
+   LDR AGROFARMS — ATTENDANCE
+   ========================================================= */
+
+:root {
+  --blue: #3f6f91;
+  --blue-dark: #2f5875;
+  --blue-light: #e8f1f5;
+
+  --green: #245c4a;
+  --green-light: #e7f0eb;
+  --leaf: #477c58;
+
+  --gold: #d4ad4a;
+  --gold-light: #f7efd5;
+
+  --white: #ffffff;
+
+  --text-dark: #24343d;
+  --text: #53636b;
+  --text-light: #87939a;
+
+  --border: #e3e8e5;
+
+  --shadow-sm: 0 2px 10px rgba(36, 92, 74, 0.06);
+  --shadow-md: 0 8px 25px rgba(36, 92, 74, 0.10);
+}
+
+
+/* ================= PAGE ================= */
+
+.attendance-page {
+  padding: 28px 30px;
+}
+
+
+/* ================= HEADER ================= */
+
+.attendance-header {
+  margin-bottom: 22px;
+}
+
+.attendance-header h2 {
+  margin-top: 5px;
+
+  color: var(--green);
+  font-size: 25px;
+}
+
+.attendance-header p {
+  margin-top: 5px;
+
+  color: var(--text-light);
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   TODAY ATTENDANCE
+   ========================================================= */
+
+.today-attendance-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 23px 25px;
+
+  margin-bottom: 16px;
+
+  background: linear-gradient(
+    135deg,
+    #ffffff,
+    #f4f8f5
+  );
+
+  border: 1px solid var(--border);
+
+  border-radius: 16px;
+
+  box-shadow: var(--shadow-sm);
+}
+
+.today-info h2 {
+  margin-top: 6px;
+
+  color: var(--green);
+
+  font-size: 22px;
+}
+
+.today-info p {
+  margin-top: 5px;
+
+  color: var(--text-light);
+
+  font-size: 10px;
+}
+
+.attendance-actions {
+  display: flex;
+
+  gap: 10px;
+}
+
+
+/* ================= CHECK BUTTONS ================= */
+
+.checkin-btn,
+.checkout-btn {
+  min-width: 125px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 12px 16px;
+
+  border-radius: 10px;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  transition: 0.25s ease;
+}
+
+.checkin-btn {
+  background: var(--green);
+
+  color: white;
+}
+
+.checkin-btn:hover:not(:disabled) {
+  background: var(--blue-dark);
+
+  transform: translateY(-2px);
+
+  box-shadow: var(--shadow-md);
+}
+
+.checkout-btn {
+  background: #f5e9e8;
+
+  color: #a64e49;
+}
+
+.checkout-btn:hover:not(:disabled) {
+  background: #edd9d7;
+
+  transform: translateY(-2px);
+}
+
+.checkin-btn:disabled,
+.checkout-btn:disabled {
+  opacity: 0.45;
+
+  cursor: not-allowed;
+
+  transform: none;
+}
+
+
+/* =========================================================
+   LOCATION
+   ========================================================= */
+
+.location-card {
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+
+  padding: 15px 18px;
+
+  margin-bottom: 20px;
+
+  background: white;
+
+  border: 1px solid var(--border);
+
+  border-radius: 13px;
+
+  box-shadow: var(--shadow-sm);
+}
+
+.location-icon {
+  width: 43px;
+  height: 43px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+
+  background: var(--blue-light);
+
+  font-size: 18px;
+}
+
+.location-info {
+  flex: 1;
+}
+
+.location-info strong {
+  display: block;
+
+  color: var(--green);
+
+  font-size: 11px;
+}
+
+.location-info p {
+  margin-top: 3px;
+
+  color: var(--text-light);
+
+  font-size: 9px;
+}
+
+.location-btn {
+  padding: 9px 13px;
+
+  border-radius: 8px;
+
+  background: var(--blue-light);
+
+  color: var(--blue-dark);
+
+  font-size: 9px;
+  font-weight: 700;
+
+  transition: 0.2s ease;
+}
+
+.location-btn:hover {
+  background: var(--gold-light);
+
+  color: var(--green);
+}
+
+
+/* =========================================================
+   STATS
+   ========================================================= */
+
+.attendance-stats {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 16px;
+
+  margin-bottom: 20px;
+}
+
+.attendance-stat-card {
+  min-height: 105px;
+
+  padding: 18px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+
+  background: white;
+
+  border: 1px solid var(--border);
+
+  border-radius: 14px;
+
+  box-shadow: var(--shadow-sm);
+
+  transition: 0.25s ease;
+}
+
+.attendance-stat-card:hover {
+  transform: translateY(-3px);
+
+  box-shadow: var(--shadow-md);
+}
+
+.attendance-stat-icon {
+  width: 46px;
+  height: 46px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background: var(--green-light);
+
+  color: var(--green);
+
+  font-size: 18px;
+}
+
+.attendance-stat-icon.half {
+  background: var(--gold-light);
+
+  color: #8a6c1e;
+}
+
+.attendance-stat-icon.leave {
+  background: #f5e9e8;
+}
+
+.attendance-stat-icon.hours {
+  background: var(--blue-light);
+
+  color: var(--blue-dark);
+}
+
+.attendance-stat-card span {
+  color: var(--text-light);
+
+  font-size: 10px;
+}
+
+.attendance-stat-card h3 {
+  margin-top: 4px;
+
+  color: var(--green);
+
+  font-size: 24px;
+}
+
+
+/* =========================================================
+   TABLE CARD
+   ========================================================= */
+
+.attendance-table-card {
+  background: white;
+
+  border: 1px solid var(--border);
+
+  border-radius: 14px;
+
+  box-shadow: var(--shadow-sm);
+
+  overflow: hidden;
+}
+
+.table-header {
+  padding: 20px 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.table-header h3 {
+  margin-top: 4px;
+
+  color: var(--green);
+
+  font-size: 16px;
+}
+
+#attendanceMonth {
+  min-height: 38px;
+
+  padding: 0 11px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 8px;
+
+  outline: none;
+
+  background: white;
+
+  color: var(--text);
+
+  font-size: 9px;
+
+  cursor: pointer;
+}
+
+#attendanceMonth:focus {
+  border-color: var(--blue);
+}
+
+
+/* ================= TABLE ================= */
+
+.table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+
+  min-width: 750px;
+
+  border-collapse: collapse;
+}
+
+thead th {
+  padding: 12px 15px;
+
+  background: #f7faf8;
+
+  color: var(--blue-dark);
+
+  font-size: 9px;
+  font-weight: 800;
+
+  text-align: left;
+
+  border-bottom: 1px solid var(--border);
+}
+
+tbody td {
+  padding: 14px 15px;
+
+  color: var(--text);
+
+  font-size: 10px;
+
+  border-bottom: 1px solid #edf0ee;
+}
+
+tbody tr {
+  transition: 0.2s ease;
+}
+
+tbody tr:hover {
+  background: #fafcfb;
+}
+
+
+/* =========================================================
+   ATTENDANCE STATUS
+   ========================================================= */
+
+.attendance-status {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 5px;
+
+  padding: 5px 9px;
+
+  border-radius: 20px;
+
+  font-size: 8px;
+  font-weight: 700;
+}
+
+.attendance-status::before {
+  content: "";
+
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+}
+
+.attendance-status.present {
+  background: var(--green-light);
+
+  color: var(--green);
+}
+
+.attendance-status.present::before {
+  background: var(--leaf);
+}
+
+.attendance-status.absent {
+  background: #f5e9e8;
+
+  color: #a64e49;
+}
+
+.attendance-status.absent::before {
+  background: #c85b55;
+}
+
+.attendance-status.half-day {
+  background: var(--gold-light);
+
+  color: #8a6c1e;
+}
+
+.attendance-status.half-day::before {
+  background: var(--gold);
+}
+
+.attendance-status.leave {
+  background: var(--blue-light);
+
+  color: var(--blue-dark);
+}
+
+.attendance-status.leave::before {
+  background: var(--blue);
+}
+
+
+/* =========================================================
+   TIME / HOURS
+   ========================================================= */
+
+.attendance-time {
+  color: var(--blue-dark);
+
+  font-weight: 600;
+}
+
+.working-hours {
+  color: var(--green);
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.empty-attendance {
+  height: 280px;
+
+  text-align: center;
+}
+
+.empty-icon {
+  width: 58px;
+  height: 58px;
+
+  margin: 0 auto 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: var(--blue-light);
+
+  font-size: 25px;
+}
+
+.empty-attendance strong {
+  display: block;
+
+  color: var(--green);
+
+  font-size: 13px;
+}
+
+.empty-attendance p {
+  margin-top: 5px;
+
+  color: var(--text-light);
+
+  font-size: 10px;
+}
+
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+.modal-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 2000;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(20, 45, 37, 0.48);
+
+  backdrop-filter: blur(5px);
+}
+
+.modal-overlay.show {
+  display: flex;
+}
+
+.attendance-modal {
+  width: min(450px, 100%);
+
+  padding: 25px;
+
+  border-radius: 18px;
+
+  background: white;
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.20);
+}
+
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  margin-bottom: 22px;
+}
+
+.modal-header h2 {
+  margin-top: 4px;
+
+  color: var(--green);
+
+  font-size: 20px;
+}
+
+.close-modal {
+  width: 34px;
+  height: 34px;
+
+  border-radius: 8px;
+
+  background: #f2f5f3;
+
+  color: var(--text);
+
+  font-size: 22px;
+
+  transition: 0.2s ease;
+}
+
+.close-modal:hover {
+  background: #f5e9e8;
+
+  color: #a64e49;
+}
+
+
+/* ================= CONFIRM LOCATION ================= */
+
+.confirm-location {
+  padding: 22px;
+
+  text-align: center;
+
+  border: 1px solid #dfe8e3;
+
+  border-radius: 12px;
+
+  background: var(--green-light);
+}
+
+.confirm-icon {
+  width: 52px;
+  height: 52px;
+
+  margin: 0 auto 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: white;
+
+  font-size: 23px;
+}
+
+.confirm-location strong {
+  display: block;
+
+  color: var(--green);
+
+  font-size: 12px;
+}
+
+.confirm-location p {
+  max-width: 300px;
+
+  margin: 6px auto 0;
+
+  color: var(--text-light);
+
+  font-size: 9px;
+
+  line-height: 1.5;
+}
+
+
+/* ================= MODAL ACTIONS ================= */
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+
+  gap: 10px;
+
+  margin-top: 22px;
+
+  padding-top: 18px;
+
+  border-top: 1px solid var(--border);
+}
+
+.cancel-btn {
+  padding: 10px 18px;
+
+  border-radius: 8px;
+
+  background: #f1f4f2;
+
+  color: var(--text);
+
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.cancel-btn:hover {
+  background: #e7ece9;
+}
+
+.confirm-btn {
+  padding: 10px 20px;
+
+  border-radius: 8px;
+
+  background: var(--green);
+
+  color: white;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  transition: 0.2s ease;
+}
+
+.confirm-btn:hover {
+  background: var(--blue-dark);
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+  .attendance-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+
+@media (max-width: 768px) {
+
+  .attendance-page {
+    padding: 20px 15px;
+  }
+
+  .today-attendance-card {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .attendance-actions {
+    width: 100%;
+  }
+
+  .checkin-btn,
+  .checkout-btn {
+    flex: 1;
+  }
+
+  .location-card {
+    align-items: flex-start;
+
+    flex-wrap: wrap;
+  }
+
+  .location-info {
+    min-width: calc(100% - 60px);
+  }
+
+  .location-btn {
+    margin-left: 56px;
+  }
+
+}
+
+
+@media (max-width: 520px) {
+
+  .attendance-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .attendance-stat-card {
+    min-height: 90px;
+  }
+
+  .attendance-actions {
+    flex-direction: column;
+  }
+
+  .checkin-btn,
+  .checkout-btn {
+    width: 100%;
+  }
+
+  .attendance-modal {
+    padding: 19px;
+  }
+
+  .modal-actions {
+    flex-direction: column-reverse;
+  }
+
+  .cancel-btn,
+  .confirm-btn {
+    width: 100%;
+  }
+
+}

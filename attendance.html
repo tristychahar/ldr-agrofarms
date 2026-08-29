@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Attendance | LDR Agrofarms</title>
+
+  <link
+    rel="stylesheet"
+    href="fa-dashboard.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="attendance.css"
+  >
+</head>
+
+<body>
+
+  <!-- ================= SIDEBAR ================= -->
+
+  <aside class="sidebar">
+
+    <div class="brand">
+
+      <div class="brand-logo">
+        🌾
+      </div>
+
+      <div>
+        <h2>LDR Agrofarms</h2>
+        <span>Management System</span>
+      </div>
+
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+      <p class="nav-title">MAIN</p>
+
+      <a
+        href="fa-dashboard.html"
+        class="nav-item"
+      >
+        <span>📊</span>
+        <span>Dashboard</span>
+      </a>
+
+      <a
+        href="my-farmers.html"
+        class="nav-item"
+      >
+        <span>🌾</span>
+        <span>My Farmers</span>
+      </a>
+
+      <a
+        href="field-visits.html"
+        class="nav-item"
+      >
+        <span>📍</span>
+        <span>Field Visits</span>
+      </a>
+
+      <a
+        href="meetings.html"
+        class="nav-item"
+      >
+        <span>🤝</span>
+        <span>Meetings</span>
+      </a>
+
+
+      <p class="nav-title">WORK</p>
+
+      <a
+        href="attendance.html"
+        class="nav-item active"
+      >
+        <span>🕘</span>
+        <span>Attendance</span>
+      </a>
+
+      <a
+        href="tasks.html"
+        class="nav-item"
+      >
+        <span>📋</span>
+        <span>Tasks</span>
+      </a>
+
+      <a
+        href="leave.html"
+        class="nav-item"
+      >
+        <span>📝</span>
+        <span>Leave</span>
+      </a>
+
+
+      <p class="nav-title">ACCOUNT</p>
+
+      <a
+        href="notifications.html"
+        class="nav-item"
+      >
+        <span>🔔</span>
+        <span>Notifications</span>
+      </a>
+
+      <a
+        href="profile.html"
+        class="nav-item"
+      >
+        <span>👤</span>
+        <span>Profile</span>
+      </a>
+
+    </nav>
+
+
+    <button
+      class="logout-btn"
+      id="logoutBtn"
+    >
+      <span>🚪</span>
+      Logout
+    </button>
+
+  </aside>
+
+
+  <!-- ================= MAIN ================= -->
+
+  <main class="main-content">
+
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+      <button
+        class="menu-btn"
+        id="menuBtn"
+      >
+        ☰
+      </button>
+
+
+      <div class="page-heading">
+
+        <h1>Attendance</h1>
+
+        <p>
+          Manage your daily attendance
+        </p>
+
+      </div>
+
+
+      <div class="topbar-actions">
+
+        <button class="icon-btn">
+          🔔
+        </button>
+
+
+        <div class="user-profile">
+
+          <div class="avatar">
+            FA
+          </div>
+
+          <div class="user-info">
+
+            <strong>
+              Field Assistant
+            </strong>
+
+            <span>
+              FA
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <!-- ================= ATTENDANCE PAGE ================= -->
+
+    <section class="attendance-page">
+
+
+      <!-- HEADER -->
+
+      <div class="attendance-header">
+
+        <div>
+
+          <span class="card-label">
+            ATTENDANCE MANAGEMENT
+          </span>
+
+          <h2>
+            Daily Attendance
+          </h2>
+
+          <p>
+            Mark your attendance and track working hours.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- ================= TODAY CARD ================= -->
+
+      <div class="today-attendance-card">
+
+
+        <div class="today-info">
+
+          <span class="card-label">
+            TODAY
+          </span>
+
+          <h2 id="todayDate">
+            --
+          </h2>
+
+          <p id="attendanceStatus">
+            Attendance not marked
+          </p>
+
+        </div>
+
+
+        <div class="attendance-actions">
+
+          <button
+            class="checkin-btn"
+            id="checkInBtn"
+          >
+            <span>🟢</span>
+            Check In
+          </button>
+
+
+          <button
+            class="checkout-btn"
+            id="checkOutBtn"
+            disabled
+          >
+            <span>🔴</span>
+            Check Out
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- ================= LOCATION ================= -->
+
+      <div class="location-card">
+
+        <div class="location-icon">
+          📍
+        </div>
+
+        <div class="location-info">
+
+          <strong>
+            Current Location
+          </strong>
+
+          <p id="locationStatus">
+            Location not captured
+          </p>
+
+        </div>
+
+        <button
+          class="location-btn"
+          id="getLocationBtn"
+        >
+          Get Location
+        </button>
+
+      </div>
+
+
+      <!-- ================= STATS ================= -->
+
+      <div class="attendance-stats">
+
+
+        <div class="attendance-stat-card">
+
+          <div class="attendance-stat-icon">
+            📅
+          </div>
+
+          <div>
+
+            <span>
+              Present Days
+            </span>
+
+            <h3 id="presentDays">
+              0
+            </h3>
+
+          </div>
+
+        </div>
+
+
+        <div class="attendance-stat-card">
+
+          <div class="attendance-stat-icon half">
+            ◐
+          </div>
+
+          <div>
+
+            <span>
+              Half Days
+            </span>
+
+            <h3 id="halfDays">
+              0
+            </h3>
+
+          </div>
+
+        </div>
+
+
+        <div class="attendance-stat-card">
+
+          <div class="attendance-stat-icon leave">
+            📝
+          </div>
+
+          <div>
+
+            <span>
+              Leave Days
+            </span>
+
+            <h3 id="leaveDays">
+              0
+            </h3>
+
+          </div>
+
+        </div>
+
+
+        <div class="attendance-stat-card">
+
+          <div class="attendance-stat-icon hours">
+            ⏱️
+          </div>
+
+          <div>
+
+            <span>
+              Working Hours
+            </span>
+
+            <h3 id="workingHours">
+              0
+            </h3>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- ================= HISTORY ================= -->
+
+      <div class="attendance-table-card">
+
+
+        <div class="table-header">
+
+          <div>
+
+            <span class="card-label">
+              ATTENDANCE HISTORY
+            </span>
+
+            <h3>
+              My Attendance
+            </h3>
+
+          </div>
+
+
+          <select
+            id="attendanceMonth"
+          >
+
+            <option value="current">
+              Current Month
+            </option>
+
+            <option value="previous">
+              Previous Month
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+          <table>
+
+            <thead>
+
+              <tr>
+
+                <th>Date</th>
+                <th>Status</th>
+                <th>Check In</th>
+                <th>Check Out</th>
+                <th>Working Hours</th>
+                <th>Remarks</th>
+
+              </tr>
+
+            </thead>
+
+
+            <tbody
+              id="attendanceTableBody"
+            >
+
+              <tr>
+
+                <td
+                  colspan="6"
+                  class="empty-attendance"
+                >
+
+                  <div class="empty-icon">
+                    🕘
+                  </div>
+
+                  <strong>
+                    No attendance records
+                  </strong>
+
+                  <p>
+                    Your attendance history will appear here.
+                  </p>
+
+                </td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+
+    </section>
+
+  </main>
+
+
+  <!-- ================= LOCATION MODAL ================= -->
+
+  <div
+    class="modal-overlay"
+    id="attendanceModal"
+  >
+
+    <div class="attendance-modal">
+
+
+      <div class="modal-header">
+
+        <div>
+
+          <span class="card-label">
+            ATTENDANCE
+          </span>
+
+          <h2 id="attendanceModalTitle">
+            Confirm Check In
+          </h2>
+
+        </div>
+
+
+        <button
+          class="close-modal"
+          id="closeAttendanceModal"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <div class="confirm-location">
+
+        <div class="confirm-icon">
+          📍
+        </div>
+
+        <strong>
+          Location Required
+        </strong>
+
+        <p id="confirmLocationText">
+          Your current location will be recorded with attendance.
+        </p>
+
+      </div>
+
+
+      <div class="modal-actions">
+
+        <button
+          type="button"
+          class="cancel-btn"
+          id="cancelAttendanceBtn"
+        >
+          Cancel
+        </button>
+
+
+        <button
+          type="button"
+          class="confirm-btn"
+          id="confirmAttendanceBtn"
+        >
+          Confirm
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <script src="fa-dashboard.js"></script>
+  <script src="attendance.js"></script>
+
+</body>
+
+</html>
