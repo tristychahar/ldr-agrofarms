@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Notifications | LDR Agrofarms</title>
+
+  <link
+    rel="stylesheet"
+    href="fa-dashboard.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="notifications.css"
+  >
+</head>
+
+<body>
+
+  <!-- ================= SIDEBAR ================= -->
+
+  <aside class="sidebar">
+
+    <div class="brand">
+
+      <div class="brand-logo">
+        🌾
+      </div>
+
+      <div>
+        <h2>LDR Agrofarms</h2>
+        <span>Management System</span>
+      </div>
+
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+      <p class="nav-title">MAIN</p>
+
+      <a href="fa-dashboard.html" class="nav-item">
+        <span>📊</span>
+        <span>Dashboard</span>
+      </a>
+
+      <a href="my-farmers.html" class="nav-item">
+        <span>🌾</span>
+        <span>My Farmers</span>
+      </a>
+
+      <a href="field-visits.html" class="nav-item">
+        <span>📍</span>
+        <span>Field Visits</span>
+      </a>
+
+      <a href="meetings.html" class="nav-item">
+        <span>🤝</span>
+        <span>Meetings</span>
+      </a>
+
+
+      <p class="nav-title">WORK</p>
+
+      <a href="attendance.html" class="nav-item">
+        <span>🕘</span>
+        <span>Attendance</span>
+      </a>
+
+      <a href="tasks.html" class="nav-item">
+        <span>📋</span>
+        <span>Tasks</span>
+      </a>
+
+      <a href="leave.html" class="nav-item">
+        <span>📝</span>
+        <span>Leave</span>
+      </a>
+
+
+      <p class="nav-title">ACCOUNT</p>
+
+      <a
+        href="notifications.html"
+        class="nav-item active"
+      >
+        <span>🔔</span>
+        <span>Notifications</span>
+      </a>
+
+      <a href="profile.html" class="nav-item">
+        <span>👤</span>
+        <span>Profile</span>
+      </a>
+
+    </nav>
+
+
+    <button
+      class="logout-btn"
+      id="logoutBtn"
+    >
+      <span>🚪</span>
+      Logout
+    </button>
+
+  </aside>
+
+
+  <!-- ================= MAIN ================= -->
+
+  <main class="main-content">
+
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+      <button
+        class="menu-btn"
+        id="menuBtn"
+      >
+        ☰
+      </button>
+
+
+      <div class="page-heading">
+
+        <h1>Notifications</h1>
+
+        <p>
+          Stay updated with important information
+        </p>
+
+      </div>
+
+
+      <div class="topbar-actions">
+
+        <button class="icon-btn">
+          🔔
+        </button>
+
+
+        <div class="user-profile">
+
+          <div class="avatar">
+            FA
+          </div>
+
+          <div class="user-info">
+
+            <strong>
+              Field Assistant
+            </strong>
+
+            <span>
+              FA
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <!-- ================= NOTIFICATIONS PAGE ================= -->
+
+    <section class="notifications-page">
+
+
+      <!-- HEADER -->
+
+      <div class="notifications-header">
+
+        <div>
+
+          <span class="card-label">
+            NOTIFICATION CENTER
+          </span>
+
+          <h2>
+            My Notifications
+          </h2>
+
+          <p>
+            View important updates and alerts.
+          </p>
+
+        </div>
+
+
+        <button
+          class="mark-all-btn"
+          id="markAllReadBtn"
+        >
+          ✓ Mark All as Read
+        </button>
+
+      </div>
+
+
+      <!-- ================= STATS ================= -->
+
+      <div class="notification-stats">
+
+
+        <div class="notification-stat-card">
+
+          <div class="notification-stat-icon">
+            🔔
+          </div>
+
+          <div>
+
+            <span>
+              Total
+            </span>
+
+            <h3 id="totalNotifications">
+              0
+            </h3>
+
+          </div>
+
+        </div>
+
+
+        <div class="notification-stat-card">
+
+          <div class="notification-stat-icon unread">
+            ●
+          </div>
+
+          <div>
+
+            <span>
+              Unread
+            </span>
+
+            <h3 id="unreadNotifications">
+              0
+            </h3>
+
+          </div>
+
+        </div>
+
+
+        <div class="notification-stat-card">
+
+          <div class="notification-stat-icon warning">
+            ⚠️
+          </div>
+
+          <div>
+
+            <span>
+              Warnings
+            </span>
+
+            <h3 id="warningNotifications">
+              0
+            </h3>
+
+          </div>
+
+        </div>
+
+
+        <div class="notification-stat-card">
+
+          <div class="notification-stat-icon success">
+            ✓
+          </div>
+
+          <div>
+
+            <span>
+              Updates
+            </span>
+
+            <h3 id="successNotifications">
+              0
+            </h3>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- ================= TOOLBAR ================= -->
+
+      <div class="notification-toolbar">
+
+
+        <div class="search-box">
+
+          <span>🔍</span>
+
+          <input
+            type="text"
+            id="notificationSearch"
+            placeholder="Search notifications..."
+          >
+
+        </div>
+
+
+        <select id="notificationTypeFilter">
+
+          <option value="ALL">
+            All Types
+          </option>
+
+          <option value="INFO">
+            Information
+          </option>
+
+          <option value="SUCCESS">
+            Success
+          </option>
+
+          <option value="WARNING">
+            Warning
+          </option>
+
+          <option value="ATTENDANCE">
+            Attendance
+          </option>
+
+          <option value="EMPLOYEE">
+            Employee
+          </option>
+
+          <option value="FARMER">
+            Farmer
+          </option>
+
+          <option value="SYSTEM">
+            System
+          </option>
+
+        </select>
+
+
+        <select id="notificationReadFilter">
+
+          <option value="ALL">
+            All
+          </option>
+
+          <option value="UNREAD">
+            Unread
+          </option>
+
+          <option value="READ">
+            Read
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <!-- ================= NOTIFICATION LIST ================= -->
+
+      <div class="notifications-card">
+
+
+        <div class="list-header">
+
+          <div>
+
+            <span class="card-label">
+              RECENT ACTIVITY
+            </span>
+
+            <h3>
+              Notifications
+            </h3>
+
+          </div>
+
+
+          <span
+            class="notification-count"
+            id="notificationCount"
+          >
+            0 Notifications
+          </span>
+
+        </div>
+
+
+        <div
+          class="notification-list"
+          id="notificationList"
+        >
+
+          <!-- Notifications will load here -->
+
+          <div class="empty-notifications">
+
+            <div class="empty-icon">
+              🔔
+            </div>
+
+            <strong>
+              No notifications
+            </strong>
+
+            <p>
+              Your notifications will appear here.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </section>
+
+  </main>
+
+
+  <!-- ================= NOTIFICATION DETAIL MODAL ================= -->
+
+  <div
+    class="modal-overlay"
+    id="notificationModal"
+  >
+
+    <div class="notification-modal">
+
+
+      <div class="modal-header">
+
+        <div>
+
+          <span class="card-label">
+            NOTIFICATION
+          </span>
+
+          <h2 id="notificationModalTitle">
+            Notification
+          </h2>
+
+        </div>
+
+
+        <button
+          class="close-modal"
+          id="closeNotificationModal"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <div class="notification-detail">
+
+        <div
+          class="notification-detail-icon"
+          id="notificationDetailIcon"
+        >
+          🔔
+        </div>
+
+
+        <div class="notification-detail-content">
+
+          <span
+            class="notification-detail-type"
+            id="notificationDetailType"
+          >
+            INFO
+          </span>
+
+          <h3 id="notificationDetailTitle">
+            -
+          </h3>
+
+          <p id="notificationDetailMessage">
+            -
+          </p>
+
+          <small id="notificationDetailDate">
+            -
+          </small>
+
+        </div>
+
+      </div>
+
+
+      <div class="modal-actions">
+
+        <button
+          type="button"
+          class="close-detail-btn"
+          id="closeNotificationBtn"
+        >
+          Close
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <script src="fa-dashboard.js"></script>
+
+  <script src="notifications.js"></script>
+
+</body>
