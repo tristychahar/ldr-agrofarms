@@ -1,4 +1,5 @@
-const API_BASE_URL = "http://localhost:5000/api";
+const API_BASE_URL = "https://ldr-agrofarms.onrender.com/api";
+console.log("LOGIN API:", `${API_BASE_URL}/auth/login`);
 
 document.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem("token")) {
