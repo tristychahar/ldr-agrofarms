@@ -114,12 +114,20 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
 
-        locationStatus.textContent =
-          `Location captured • Accuracy: ${
-            Math.round(
-              position.coords.accuracy
-            )
-          }m`;
+      locationStatus.innerHTML = `
+  <strong>Location captured</strong><br>
+  Latitude: ${position.coords.latitude.toFixed(6)}<br>
+  Longitude: ${position.coords.longitude.toFixed(6)}<br>
+  Accuracy: ${Math.round(position.coords.accuracy)}m<br><br>
+
+  <a
+    href="https://www.google.com/maps?q=${position.coords.latitude},${position.coords.longitude}"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    📍 View on Google Maps
+  </a>
+`;
 
       },
 
