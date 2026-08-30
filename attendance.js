@@ -103,27 +103,34 @@ document.addEventListener("DOMContentLoaded", () => {
       (position) => {
 
         currentLocation = {
-          latitude:
-            position.coords.latitude,
+  latitude: position.coords.latitude,
+  longitude: position.coords.longitude,
+  accuracy: position.coords.accuracy
+};
 
-          longitude:
-            position.coords.longitude,
+const latitude = position.coords.latitude;
+const longitude = position.coords.longitude;
+const accuracy = Math.round(position.coords.accuracy);
 
-          accuracy:
-            position.coords.accuracy
-        };
-
-
-      locationStatus.innerHTML = `
+locationStatus.innerHTML = `
   <strong>Location captured</strong><br>
-  Latitude: ${position.coords.latitude.toFixed(6)}<br>
-  Longitude: ${position.coords.longitude.toFixed(6)}<br>
-  Accuracy: ${Math.round(position.coords.accuracy)}m<br><br>
+  Latitude: ${latitude.toFixed(6)}<br>
+  Longitude: ${longitude.toFixed(6)}<br>
+  Accuracy: ${accuracy}m<br><br>
 
   <a
-    href="https://www.google.com/maps?q=${position.coords.latitude},${position.coords.longitude}"
+    href="https://www.google.com/maps?q=${latitude},${longitude}"
     target="_blank"
     rel="noopener noreferrer"
+    style="
+      display:inline-block;
+      padding:10px 16px;
+      border-radius:10px;
+      background:#1f4e68;
+      color:white;
+      text-decoration:none;
+      font-weight:600;
+    "
   >
     📍 View on Google Maps
   </a>
