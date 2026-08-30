@@ -52,6 +52,7 @@ app.get("/", (req, res) => {
 
 // Server
 const PORT = Number(process.env.PORT) || 5000;
+console.log("JWT CHECK:", process.env.JWT_SECRET ? "JWT_SECRET FOUND" : "JWT_SECRET MISSING");
 
 const startServer = async () => {
   await connectDB();

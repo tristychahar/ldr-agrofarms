@@ -2,6 +2,10 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 
+
+// ===============================
+// CREATE USER
+// ===============================
 const createUser = async (req, res) => {
   try {
     const { username, password, employee, role } = req.body;
@@ -13,7 +17,11 @@ const createUser = async (req, res) => {
       });
     }
 
-    const existingUser = await User.findOne({ username });
+    const normalizedUsername = username.trim().toLowerCase();
+
+    const existingUser = await User.findOne({
+      username: normalizedUsername,
+    });
 
     if (existingUser) {
       return res.status(409).json({
@@ -25,13 +33,14 @@ const createUser = async (req, res) => {
     const passwordHash = await bcrypt.hash(password, 12);
 
     const user = await User.create({
-      username,
+      username: normalizedUsername,
       passwordHash,
       employee,
       role,
+      isActive: true,
     });
 
-    res.status(201).json({
+    return res.status(201).json({
       success: true,
       message: "User created successfully",
       data: {
@@ -44,17 +53,23 @@ const createUser = async (req, res) => {
   } catch (error) {
     console.error("Create user error:", error);
 
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
-      message: "Failed to create user",
-      error: error.message,
+      message: error.message,
     });
   }
 };
 
+
+// ===============================
+// LOGIN USER
+// ===============================
 const loginUser = async (req, res) => {
   try {
-    const { username, password } = req.body;
+
+    console.log("LOGIN JWT CHECK:", process.env.JWT_SECRET ? "JWT_SECRET FOUND" : "JWT_SECRET MISSING");
+    const username = req.body.username?.trim().toLowerCase();
+    const password = req.body.password;
 
     if (!username || !password) {
       return res.status(400).json({
@@ -63,15 +78,26 @@ const loginUser = async (req, res) => {
       });
     }
 
-    const user = await User.findOne({ username }).select("+passwordHash");
+    // Find user and include passwordHash
+    const user = await User.findOne({
+      username: username,
+    }).select("+passwordHash");
 
-    if (!user || !user.isActive) {
+    if (!user) {
       return res.status(401).json({
         success: false,
-        message: "Invalid username or password",
+        message: "User not found",
       });
     }
 
+    if (!user.isActive) {
+      return res.status(401).json({
+        success: false,
+        message: "User account is inactive",
+      });
+    }
+
+    // Check password
     const passwordMatch = await bcrypt.compare(
       password,
       user.passwordHash
@@ -80,10 +106,19 @@ const loginUser = async (req, res) => {
     if (!passwordMatch) {
       return res.status(401).json({
         success: false,
-        message: "Invalid username or password",
+        message: "Incorrect password",
       });
     }
 
+    // JWT secret check
+    if (!process.env.JWT_SECRET) {
+      return res.status(500).json({
+        success: false,
+        message: "JWT_SECRET is missing in .env",
+      });
+    }
+
+    // Create JWT token
     const token = jwt.sign(
       {
         userId: user._id,
@@ -96,10 +131,11 @@ const loginUser = async (req, res) => {
       }
     );
 
+    // Update last login
     user.lastLoginAt = new Date();
     await user.save();
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       message: "Login successful",
       token,
@@ -109,16 +145,21 @@ const loginUser = async (req, res) => {
         role: user.role,
       },
     });
-  } catch (error) {
-    console.error("Login error:", error);
 
-    res.status(500).json({
+  } catch (error) {
+    console.error("LOGIN ERROR:", error);
+
+    return res.status(500).json({
       success: false,
-      message: "Login failed",
+      message: error.message,
     });
   }
 };
 
+
+// ===============================
+// EXPORTS
+// ===============================
 module.exports = {
   createUser,
   loginUser,
